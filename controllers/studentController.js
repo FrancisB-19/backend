@@ -23,3 +23,54 @@ export const createStudents = async (req, res) =>{
         });
     }
 } 
+
+//update
+
+export const editStudents = async (req, res) => {
+    const { name, srcode, program } = req.body;
+    const { id } = req.params;
+
+    const student = {
+        id: parseInt(id),
+        name,
+        srcode,
+        program,
+    };
+
+    try {
+        const updatedStudents = await studentService.updateStudents(student);
+
+        res.status(200).json({
+            success: true,
+            message: updatedStudents
+        });
+
+    } catch (e) {
+        console.log(e);
+
+        res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+};
+
+// Delete
+export const deleteStudents = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deletedStudents = await studentService.deleteStudents(parseInt(id));
+
+        res.status(200).json({
+            success: true,
+            message: deletedStudents
+        });
+
+    } catch (e) {
+        console.log(e);
+
+        res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+};
