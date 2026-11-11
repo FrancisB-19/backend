@@ -44,6 +44,7 @@ export const editBooks = async (req, res) =>{
             error: "Interval Server Error"
         });
     }
+<<<<<<< HEAD
 }
 
 
@@ -60,8 +61,59 @@ export const deleteBooks = async (req, res) =>{
         });
     }catch(e){
         console.log(e);
+=======
+} 
+//update
+
+export const editBooks = async (req, res) => {
+    const { name, author } = req.body;
+    const { id } = req.params;
+
+    const book = {
+        id: parseInt(id),
+        name,
+        author,
+    };
+
+    try {
+        const updatedBooks = await bookService.updateBooks(book);
+
+        res.status(200).json({
+            success: true,
+            message: updatedBooks
+        });
+
+    } catch (e) {
+        console.log(e);
+
+>>>>>>> 9cc4633fcdba3259a1ee2d2c73468112f572b023
         res.status(500).json({
             error: "Internal Server Error"
         });
     }
+<<<<<<< HEAD
 }
+=======
+};
+
+// Delete
+export const deleteBooks = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deletedBooks = await bookService.deleteBooks(parseInt(id));
+
+        res.status(200).json({
+            success: true,
+            message: deletedBooks
+        });
+
+    } catch (e) {
+        console.log(e);
+
+        res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+};
+>>>>>>> 9cc4633fcdba3259a1ee2d2c73468112f572b023

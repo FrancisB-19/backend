@@ -11,7 +11,11 @@ export const createBooks = async(book) =>{
 } 
 
 //update
+<<<<<<< HEAD
 export const updateBooks = async(book) =>{
+=======
+export const updateBooks = async(student) =>{
+>>>>>>> 9cc4633fcdba3259a1ee2d2c73468112f572b023
     const updatedBooks = await bookModel.update(book);
     return updatedBooks;
 }

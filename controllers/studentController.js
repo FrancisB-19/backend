@@ -30,7 +30,8 @@ export const editStudents = async (req, res) => {
     const { name, srcode, program } = req.body;
     const { id } = req.params;
 
-    const students = {
+
+    const student = {
         id: parseInt(id),
         name,
         srcode,
@@ -38,11 +39,12 @@ export const editStudents = async (req, res) => {
     };
 
     try {
-        const updateStudents = await studentService.updateStudents(students);
+        const updatedStudents = await studentService.updateStudents(student);
 
         res.status(200).json({
             success: true,
-            message: updateStudents
+            message: updatedStudents
+
         });
 
     } catch (e) {
@@ -59,11 +61,13 @@ export const deleteStudents = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const deleteStudents = await studentService.deleteStudents(parseInt(id));
+
+        const deletedStudents = await studentService.deleteStudents(parseInt(id));
 
         res.status(200).json({
             success: true,
-            message: deleteStudents
+            message: deletedStudents
+
         });
 
     } catch (e) {
