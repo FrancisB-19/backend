@@ -4,20 +4,20 @@ export const fetch = async () => {
     const [rows] = await pool.query("SELECT * FROM students");
     return rows;
 };
-export const insert = async (student) =>{
+export const insert = async (students) =>{
     const [result] = await pool.query(
-        "INSERT INTO students(name, srcode, program) VALUES (?,?)",
-        [student.name, student.srcode, student.program]
+        "INSERT INTO students(name, srcode, program) VALUES (?, ?, ?)",
+        [students.name, students.srcode, students.program]
     );
     
     return result.insertId;
 }
 
 // Update 
-export const update = async () => {
+export const update = async (students) => {
     const [result] = await pool.query(
         "UPDATE students SET name = ?, srcode = ?, program = ? WHERE id = ?",
-        [student.name, student.srcode, student.program, student.id]
+        [students.name, students.srcode, students.program, students.id]
     );
 
     return result.affectedRows;

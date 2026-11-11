@@ -11,7 +11,7 @@ export const createBooks = async(book) =>{
 } 
 
 //update
-export const updateBooks = async(student) =>{
+export const updateBooks = async(book) =>{
     const updatedBooks = await bookModel.update(book);
     return updatedBooks;
 }

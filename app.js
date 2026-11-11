@@ -3,6 +3,7 @@ import bookRoutes from './routes/bookRoutes.js';
 import studentRoutes from "./routes/studentRoutes.js";
 
 const app = express();
+app.use(express.json());
 
 app.use('/book', bookRoutes);
 app.use('/students', studentRoutes);
