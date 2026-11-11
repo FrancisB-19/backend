@@ -5,11 +5,14 @@ import bookRoutes from './routes/bookRoutes.js';
 import studentRoutes from "./routes/studentRoutes.js";
 
 let corsOptions ={
-    origin: 'http://localhost:5173/'
+    origin: 'http://localhost:5173'
 }
 
 const app = express();
+
 app.use(express.json());
+app.use(cors(corsOptions));
+
 
 app.use('/book', bookRoutes);
 app.use('/students', studentRoutes);
